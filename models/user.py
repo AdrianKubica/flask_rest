@@ -5,18 +5,18 @@ from db import db
 class UserModel(db.Model):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, primary_key=True)  # this properties have to match properties in __init__ method
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(80))
 
     def __init__(self, username, password):
         self.password = password
         self.username = username
-        self.something = 'hi'  # this wont be save to database
+        self.something = 'hi'
 
     @classmethod
     def find_by_username(cls, username):
-        return cls.query.filter_by(username=username).first()  # first username is column name, second is passed argument
+        return cls.query.filter_by(username=username).first()
 
     @classmethod
     def find_by_id(cls, _id):
